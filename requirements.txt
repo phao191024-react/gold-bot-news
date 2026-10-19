@@ -1,0 +1,5 @@
+google-genai
+feedparser
+httpx
+fastapi
+uvicorn
