@@ -1,3 +1,4 @@
+import os
 import asyncio
 import feedparser
 import httpx
@@ -7,10 +8,11 @@ from fastapi import FastAPI
 # Khởi tạo web app (dùng cho Render và chạy cục bộ)
 app = FastAPI()
 
-# ==================== CAU HINH THONG SO ====================
-GEMINI_API_KEY = ""
-TELEGRAM_BOT_TOKEN = ""
-TELEGRAM_CHAT_ID =   # Chat ID nhóm của bạn
+# ==================== CAU HINH THONG SO (LAY TU BIEN MOI TRUONG) ====================
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+# Chuyển chat ID sang kiểu số nguyên (int) an toàn cho Telegram API
+TELEGRAM_CHAT_ID = int(os.getenv("TELEGRAM_CHAT_ID", "0"))
 
 # Khởi tạo client Gemini theo chuẩn SDK mới
 client = genai.Client(api_key=GEMINI_API_KEY)
